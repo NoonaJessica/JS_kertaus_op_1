@@ -1,23 +1,25 @@
 'use strict';
 
-const sivuA = prompt('anna kolmion ensimmäisen kyljen pituus');
-const sivuB = prompt('anna kolmion toisen kyljen pituus');
-const sivuC = prompt('anna kolmion kolmannen kyljen pituus');
+const sivuA = prompt('enter the length of the first side of the triangle');
+const sivuB = prompt('enter the length of one side of the triangle');
+const sivuC = prompt('enter the length of the third side of the triangle');
 
 let tyyppi = '';
+ // jos sivut ovat kaikki yhtä pitkiä --> tasasivuinen Kolmio
 
-if ( sivuA === sivuB && sivuB === sivuC){
-  // jos sivut ovat kaikki yhtä pitkiä --> tasasivuinen Kolmio
-  tyyppi ='tasasivuinen kolmio';
+if (sivuA === sivuB && sivuB === sivuC){
+  tyyppi ='equilateral triangle';
 }
-else if ( sivuA === sivuB || sivuA === sivuC ||  sivuC === sivuB){
+ else if ( sivuA === sivuB || sivuA === sivuC ||  sivuC === sivuB){
   // jos kaksi sivuista ovat yhtä pitkiä --> tasakylkinen Kolmio
-  tyyppi ='tasakylkinen kolmio';
+  tyyppi ='isosceles triangle';
 }
-else if(sivuA !== sivuB && sivuC !== sivuA && sivuC !== sivuB){
+ else if(sivuA !== sivuB && sivuC !== sivuA && sivuC !== sivuB){
   // jos kaikki sivut eripituisia --> epäsäännöllinen Kolmio
-  tyyppi = 'epäsäännöllinen kolmio';
+  tyyppi = 'irregular triangle';
 }
 
 
-document.getElementById('kohde').insertAdjacentElement('beforeend', tyyppi);
+document.getElementById('kohde').insertAdjacentText('beforeend', 'A type of triangle: ' + tyyppi);
+
+
