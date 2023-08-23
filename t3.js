@@ -4,19 +4,20 @@ const sivuA = prompt('anna kolmion ensimmäisen kyljen pituus');
 const sivuB = prompt('anna kolmion toisen kyljen pituus');
 const sivuC = prompt('anna kolmion kolmannen kyljen pituus');
 
-// jos sivut ovat kaikki yhtä pitkiä --> tasasivuinen Kolmio
-if ( sivuA === sivuB && sivuB === sivuC){
-    console.log('tasasivuinen kolmio')
-  }
+let tyyppi = '';
 
-// jos kaksi sivuista ovat yhtä pitkiä --> tasakylkinen Kolmio
-if ( sivuA === sivuB || sivuA === sivuC ||  sivuC === sivuB){
-  console.log('tasakylkinen kolmio')
+if ( sivuA === sivuB && sivuB === sivuC){
+  // jos sivut ovat kaikki yhtä pitkiä --> tasasivuinen Kolmio
+  tyyppi ='tasasivuinen kolmio';
+}
+else if ( sivuA === sivuB || sivuA === sivuC ||  sivuC === sivuB){
+  // jos kaksi sivuista ovat yhtä pitkiä --> tasakylkinen Kolmio
+  tyyppi ='tasakylkinen kolmio';
+}
+else if(sivuA !== sivuB && sivuC !== sivuA && sivuC !== sivuB){
+  // jos kaikki sivut eripituisia --> epäsäännöllinen Kolmio
+  tyyppi = 'epäsäännöllinen kolmio';
 }
 
 
-// jos kaikki sivut eripituisia --> epäsäännöllinen Kolmio
-if(sivuA !== sivuB && sivuC !== sivuA && sivuC !== sivuB){
-      console.log('epäsäännöllinen kolmio')
-    }
-
+document.getElementById('kohde').insertAdjacentElement('beforeend', tyyppi);
