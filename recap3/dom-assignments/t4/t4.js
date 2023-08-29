@@ -1,3 +1,4 @@
+'use strict';
 const restaurants = [
   {
     location: {type: 'Point', coordinates: [25.018456, 60.228982]},
@@ -771,3 +772,44 @@ const restaurants = [
 ];
 
 // your code here
+function laskeEtaisyys(x1, y1, x2, y2) {
+  const Distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  return Distance;
+}
+
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+function success(pos) {
+  const crd = pos.coords;
+  const x1 = crd.latitude;
+  const y1 = crd.longitude;
+  // taulukko
+  // A
+  restaurants.sort(function (a, b) {
+    const x2A = a.location.coordinates[1];
+    const y2A = a.location.coordinates[0];
+    const etaisyysA = laskeEtaisyys(x1, y1, x2A, y2A);
+    console.log(etaisyysA);
+    console.log(crd);
+    // B
+    const x2B = b.location.coordinates[1];
+    const y2B = b.location.coordinates[0];
+    const etaisyysB = laskeEtaisyys(x1, y1, x2B, y2B);
+    console.log(etaisyysB);
+    console.log(crd);
+
+    return etaisyysA - etaisyysB;
+  });
+  console.log(restaurants);
+
+  // tulosta raviontola HTML documenttiin!
+}
+navigator.geolocation.getCurrentPosition(success, error, options);
