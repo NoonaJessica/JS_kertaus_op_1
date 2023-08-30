@@ -33,12 +33,12 @@ const ul = document.querySelector('ul');
 
 function teelista() {
   ul.innerHTML = '';
-  for (const [i, todo] of todoList.entries) {
+  for (const [i, todo] of todoList.entries()) {
     console.log(i);
     const li = document.createElement('li');
     const input = document.createElement('input');
     const label = document.createElement('label');
-    const delbutton = document.createElement('button');
+    const delButton = document.createElement('button');
 
     input.type = 'checkbox';
     input.id = 'todo-' + todo.id;
@@ -60,7 +60,7 @@ function teelista() {
 
     li.appendChild(input);
     li.appendChild(label);
-    li.appendChild(delbutton);
+    li.appendChild(delButton);
     ul.appendChild(li);
   }
 }
