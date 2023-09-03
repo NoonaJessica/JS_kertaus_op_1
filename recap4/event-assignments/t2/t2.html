@@ -10,17 +10,24 @@
 </head>
 
 <body>
-  <h1>Restaurants</h1>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-    </tr>
-    <!-- add restaurants here -->
-  </table>
-  <!-- modal -->
+  <h1>Restaurant List</h1>
+  <ul id="restaurant-list"></ul>
+
+  <div id="modal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="modal-name"></h2>
+          <p>Address: <span id="modal-address"></span></p>
+          <p>Postal Code: <span id="modal-postal"></span></p>
+          <p>City: <span id="modal-city"></span></p>
+          <p>Phone: <span id="modal-phone"></span></p>
+          <p>Company: <span id="modal-company"></span></p>
+      </div>
+  </div>
   <dialog>
+
     <!-- add restaurant info here when restaurant is clicked -->
+
   </dialog>
 </body>
 

@@ -1,4 +1,4 @@
-'use strict';
+('use strict');
 const restaurants = [
   {
     location: {type: 'Point', coordinates: [25.018456, 60.228982]},
@@ -772,6 +772,7 @@ const restaurants = [
 ];
 
 // your code here
+
 function laskeEtaisyys(x1, y1, x2, y2) {
   const Distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
   return Distance;
@@ -809,7 +810,6 @@ function success(pos) {
     return etaisyysA - etaisyysB;
   });
   console.log(restaurants);
-
-  // tulosta raviontola HTML documenttiin!
 }
+
 navigator.geolocation.getCurrentPosition(success, error, options);

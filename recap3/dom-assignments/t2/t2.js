@@ -29,23 +29,21 @@ const todoList = [
   },
 ];
 
-// add your code here
-
 const ul = document.querySelector('ul');
 
 for (const todo of todoList) {
-  let checked;
-  if (todo.completed) {
-    // lisätään checked
-    checked = 'checked';
-  } else {
-    // lisätään ei checked
-    checked = '';
-  }
+  const li = document.createElement('li');
 
-  const html = `<li>
-   <input type="checkbox" id="todo-${todo.id}" ${checked}>
-   <label for="todo-${todo.id}"> ${todo.task}</label>
-   </li>`;
-  ul.insertAdjacentHTML('beforeend', html);
+  const input = document.createElement('input');
+  input.type = 'checkbox';
+  input.id = `todo-${todo.id}`;
+  input.checked = todo.completed;
+
+  const label = document.createElement('label');
+  label.htmlFor = `todo-${todo.id}`;
+  label.textContent = todo.task;
+
+  li.appendChild(input);
+  li.appendChild(label);
+  ul.appendChild(li);
 }

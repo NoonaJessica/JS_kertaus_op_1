@@ -13,8 +13,8 @@ async function fetchData(url, options) {
 (async function () {
   try {
     const user = {
-      name: 'John Doe',
-      job: 'Developer',
+      name: 'Meikäläinen',
+      job: 'Kokemusasiantuntija',
     };
     const url = 'https://reqres.in/api/unknown/23';
     const options = {

@@ -1,4 +1,4 @@
-'use strict';
+('use strict');
 const restaurants = [
   {
     location: {type: 'Point', coordinates: [25.018456, 60.228982]},
@@ -773,61 +773,41 @@ const restaurants = [
 
 // your code here
 
-document.addEventListener('DOMContentLoaded', function () {
-  const restaurantList = document.getElementById('restaurant-list');
-  const modal = document.getElementById('modal');
-  const closeModal = document.querySelector('.close');
+// koulun cordinaatiti
+const userLocation = {
+  latitude: 60.224313,
+  longitude: 24.757337,
+};
 
-  // lista funktio
-  function createRestaurantListItem(restaurant) {
-    const listItem = document.createElement('li');
-    listItem.classList.add('restaurant-item');
+function calculateDistance(restaurantLocation, userLocation) {
+  const lat1 = restaurantLocation.coordinates[1];
+  const lon1 = restaurantLocation.coordinates[0];
+  const lat2 = userLocation.latitude;
+  const lon2 = userLocation.longitude;
 
-    const name = document.createElement('span');
-    name.textContent = restaurant.name;
-    name.classList.add('restaurant-name');
+  const dLat = lat2 - lat1;
+  const dLon = lon2 - lon1;
 
-    const address = document.createElement('span');
-    address.textContent = restaurant.address;
+  const distance = Math.sqrt(dLat * dLat + dLon * dLon);
 
-    listItem.appendChild(name);
-    listItem.appendChild(address);
+  return distance;
+}
 
-    listItem.addEventListener('click', () => {
-      const allItems = document.querySelectorAll('.restaurant-item');
-      allItems.forEach(item => item.classList.remove('highlight'));
+restaurants.sort((a, b) => {
+  const distanceA = calculateDistance(a.location, userLocation);
+  const distanceB = calculateDistance(b.location, userLocation);
+  return distanceA - distanceB;
+});
 
-      listItem.classList.add('highlight');
+restaurants.forEach((restaurant, index) => {
+  console.log(`Restaurant ${index + 1}:`);
+  console.log(`Name: ${restaurant.name}`);
+  console.log(`Address: ${restaurant.address}`);
 
-      document.getElementById('modal-name').textContent = restaurant.name;
-      document.getElementById('modal-address').textContent = restaurant.address;
-      document.getElementById('modal-postal').textContent = restaurant.postal;
-      document.getElementById('modal-city').textContent = restaurant.city;
-      document.getElementById('modal-phone').textContent = restaurant.phone;
-      document.getElementById('modal-company').textContent = restaurant.company;
-
-      modal.style.display = 'block';
-    });
-
-    return listItem;
-  }
-  restaurants.sort((a, b) => a.name.localeCompare(b.name));
-  restaurants.forEach(restaurant => {
-    const listItem = createRestaurantListItem(restaurant);
-    restaurantList.appendChild(listItem);
-  });
-
-  closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-  window.addEventListener('click', event => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && modal.style.display === 'block') {
-      modal.style.display = 'none';
-    }
-  });
+  console.log(
+    `Distance: ${calculateDistance(
+      restaurant.location,
+      userLocation
+    )} kilometers\n`
+  );
 });
