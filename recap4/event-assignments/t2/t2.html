@@ -11,19 +11,20 @@
 
 <body>
   <h1>Restaurant List</h1>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-name"></h2>
+        <p>Address: <span id="modal-address"></span></p>
+        <p>Postal Code: <span id="modal-postal"></span></p>
+        <p>City: <span id="modal-city"></span></p>
+        <p>Phone: <span id="modal-phone"></span></p>
+        <p>Company: <span id="modal-company"></span></p>
+    </div>
+</div>
   <ul id="restaurant-list"></ul>
 
-  <div id="modal" class="modal">
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 id="modal-name"></h2>
-          <p>Address: <span id="modal-address"></span></p>
-          <p>Postal Code: <span id="modal-postal"></span></p>
-          <p>City: <span id="modal-city"></span></p>
-          <p>Phone: <span id="modal-phone"></span></p>
-          <p>Company: <span id="modal-company"></span></p>
-      </div>
-  </div>
+
   <dialog>
 
     <!-- add restaurant info here when restaurant is clicked -->
