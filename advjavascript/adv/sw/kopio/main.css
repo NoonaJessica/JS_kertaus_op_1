@@ -1,16 +1,23 @@
 /* import Pastor of Muppets font from "Pastor of Muppets.woff2" */
 
-@font-face {
-  font-family: 'Raleway';
-  src: url('Raleway-VariableFont_wght.ttf') format('ttf');
-}
 
+
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* Use the font in your CSS */
 body {
+  font-family: 'Muli', sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: -.003em;
+  font-size: 20px;
+  padding: 70px;
   text-align: center;
 }
 
 p {
-  font-family: Raleway, sans-serif;
   font-size: 5rem;
 }
 
