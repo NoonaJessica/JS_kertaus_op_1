@@ -12,17 +12,23 @@ const profileForm = document.querySelector('#profile-form');
 const avatarForm = document.querySelector('#avatar-form');
 
 // select inputs from the DOM
-const usernameInput = document.querySelector('#username') as HTMLInputElement;
-const passwordInput = document.querySelector('#password') as HTMLInputElement;
+const usernameInput = document.querySelector(
+  '#username'
+) as HTMLInputElement | null;
+const passwordInput = document.querySelector(
+  '#password'
+) as HTMLInputElement | null;
 
 const profileUsernameInput = document.querySelector(
   '#profile-username'
-) as HTMLInputElement;
+) as HTMLInputElement | null;
 const profileEmailInput = document.querySelector(
   '#profile-email'
-) as HTMLInputElement;
+) as HTMLInputElement | null;
 
-const avatarInput = document.querySelector('#avatar') as HTMLInputElement;
+const avatarInput = document.querySelector(
+  '#avatar'
+) as HTMLInputElement | null;
 
 // select profile elements from the DOM
 const usernameTarget = document.querySelector('#username-target');
@@ -30,7 +36,19 @@ const emailTarget = document.querySelector('#email-target');
 const avatarTarget = document.querySelector('#avatar-target');
 
 // TODO: function to login
-const login = async (): Promise<LoginUser> => {};
+const login = async (user: {
+  username: string;
+  password: string;
+}): Promise<LoginUser> => {
+  const options: RequestInit = {
+    method: 'POST',
+    headers: {
+      contentType: 'application/json',
+    },
+    body: JSON.stringify(user),
+  };
+  return await fetchData<LoginUser>(apiUrl + '/auth/login');
+};
 
 // TODO: function to update user data
 const updateUserData = async (
